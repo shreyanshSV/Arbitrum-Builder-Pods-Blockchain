@@ -7,6 +7,7 @@ import { ArrowRight, Activity, Boxes, Layers } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { buttonStyles } from "@/components/ui/Button";
 import { ChainVisual } from "@/components/home/ChainVisual";
+import { ParticleNetwork } from "@/components/home/ParticleNetwork";
 
 const container: Variants = {
   hidden: {},
@@ -30,7 +31,7 @@ const heroStats = [
 export function Hero() {
   return (
     <section className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 pb-12 pt-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pt-20">
-      {/* ambient blockchain-network backdrop (decorative) */}
+      {/* ambient blockchain backdrop (decorative): static render + live mesh */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
@@ -41,8 +42,9 @@ export function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-right opacity-50 [mask-image:radial-gradient(130%_110%_at_78%_42%,black,transparent_72%)] sm:opacity-70"
+          className="object-cover object-right opacity-35 [mask-image:radial-gradient(130%_110%_at_78%_42%,black,transparent_72%)] sm:opacity-45"
         />
+        <ParticleNetwork className="absolute inset-0 h-full w-full [mask-image:radial-gradient(120%_120%_at_70%_40%,black,transparent_78%)]" />
       </div>
 
       <motion.div variants={container} initial="hidden" animate="show">
