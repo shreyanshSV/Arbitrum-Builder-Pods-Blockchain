@@ -42,3 +42,6 @@ next-env.d.ts
 
 # user-provided video assets (not published)
 public/generated/*.mp4
+
+# local-only asset generator (not part of the app)
+scripts/gen-assets.mjs
