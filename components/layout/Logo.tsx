@@ -16,16 +16,16 @@ export function LogoMark({ className }: { className?: string }) {
     >
       <defs>
         <linearGradient id="cube-top" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#ff9a5a" />
-          <stop offset="100%" stopColor="#ff3b42" />
+          <stop offset="0%" stopColor="#ffe08a" />
+          <stop offset="100%" stopColor="#ffc53d" />
         </linearGradient>
         <linearGradient id="cube-left" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#ff3b42" />
-          <stop offset="100%" stopColor="#b3121c" />
+          <stop offset="0%" stopColor="#ffc53d" />
+          <stop offset="100%" stopColor="#d18f00" />
         </linearGradient>
         <linearGradient id="cube-right" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#ff5d6a" />
-          <stop offset="100%" stopColor="#c41d33" />
+          <stop offset="0%" stopColor="#ffd45c" />
+          <stop offset="100%" stopColor="#eaa200" />
         </linearGradient>
       </defs>
       <polygon points="16,2.5 29,10 16,17.5 3,10" fill="url(#cube-top)" />

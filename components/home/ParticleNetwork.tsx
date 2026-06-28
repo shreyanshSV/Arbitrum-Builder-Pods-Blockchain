@@ -73,7 +73,7 @@ export function ParticleNetwork({ className }: { className?: string }) {
           const dist = Math.hypot(dx, dy);
           if (dist < LINK_DIST) {
             const alpha = (1 - dist / LINK_DIST) * 0.22;
-            c.strokeStyle = `rgba(255,59,66,${alpha})`;
+            c.strokeStyle = `rgba(255,197,61,${alpha})`;
             c.lineWidth = 1;
             c.beginPath();
             c.moveTo(a.x, a.y);
@@ -103,7 +103,7 @@ export function ParticleNetwork({ className }: { className?: string }) {
       for (const n of nodes) {
         c.beginPath();
         c.arc(n.x, n.y, 1.6, 0, Math.PI * 2);
-        c.fillStyle = "rgba(255,99,104,0.75)";
+        c.fillStyle = "rgba(255,205,80,0.75)";
         c.fill();
       }
     }

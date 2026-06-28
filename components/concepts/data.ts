@@ -113,7 +113,7 @@ export const concepts: Concept[] = [
       label: "Ethereum",
       kicker: "World computer",
       icon: Coins,
-      accent: "violet",
+      accent: "primary",
       tagline: "A programmable platform for smart contracts and apps.",
       points: [
         "Runs arbitrary smart contracts on the EVM",

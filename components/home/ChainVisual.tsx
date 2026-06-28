@@ -81,7 +81,7 @@ function Connector({ delay, reduce }: { delay: number; reduce: boolean }) {
       <div className="h-6 w-px bg-gradient-to-b from-primary/60 to-accent-violet/30 md:h-px md:w-full md:bg-gradient-to-r" />
       {!reduce && (
         <motion.span
-          className="absolute h-2 w-2 rounded-full bg-primary shadow-[0_0_10px_2px_rgba(255,59,66,0.85)]"
+          className="absolute h-2 w-2 rounded-full bg-primary shadow-[0_0_10px_2px_rgba(255,197,61,0.85)]"
           initial={{ opacity: 0 }}
           animate={{
             opacity: [0, 1, 1, 0],

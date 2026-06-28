@@ -22,7 +22,7 @@ export function BackgroundFX() {
         className="aurora animate-drift left-1/2 top-[-22%] h-[55vh] w-[80vw] max-w-[1100px] -translate-x-1/2 opacity-40"
         style={{
           background:
-            "radial-gradient(closest-side, rgba(255,59,66,0.9), transparent 72%)",
+            "radial-gradient(closest-side, rgba(255,197,61,0.95), transparent 72%)",
         }}
       />
       {/* soft ember support glow, low and off to the side */}

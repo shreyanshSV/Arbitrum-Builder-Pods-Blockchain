@@ -2,12 +2,12 @@
 
 /* ------------------------------------------------------------------ *
  * ChainLab — Design System
- * Dark-mode-first, scarlet/crimson accented Web3 aesthetic.
+ * Dark-mode-first, gold/amber accented Web3 aesthetic.
  * Token layer (:root) -> Tailwind theme map (@theme inline) -> utilities
  * ------------------------------------------------------------------ */
 
 :root {
-  /* Surfaces — deep, slightly warm neutral so red reads as intentional, not alarm */
+  /* Surfaces — deep, slightly warm neutral so gold reads as intentional */
   --background: #0a0809;
   --background-elevated: #120e10;
   --surface: #181315;
@@ -18,28 +18,29 @@
   --muted: #a39ba0;
   --muted-strong: #cdc6c9;
 
-  /* Brand — crimson/scarlet family with a warm ember accent. The accent-cyan /
-   * accent-violet names are kept as design-token aliases (referenced widely) but
-   * now resolve to ember-orange and rose so the whole palette stays in the red
-   * family — a deliberate ember→scarlet→rose sweep, not a rainbow. */
-  --primary: #ff3b42;          /* scarlet */
-  --primary-strong: #db1f29;
-  --primary-foreground: #ffffff;
-  --accent-cyan: #ff8a3d;      /* ember orange (alias) */
-  --accent-violet: #ff4d6a;    /* rose red (alias) */
+  /* Brand — gold/amber family. The accent-cyan / accent-violet names are kept as
+   * design-token aliases (referenced widely) but now resolve to pale-gold and
+   * orange, so the whole palette stays warm — a pale-gold→gold→orange sweep, not
+   * a rainbow. Buttons use DARK text on gold for AA contrast. */
+  --primary: #ffc53d;          /* gold */
+  --primary-strong: #eaa200;
+  --primary-foreground: #1a1503; /* near-black, for dark-on-gold buttons */
+  --accent-cyan: #ffe08a;      /* pale gold (alias) */
+  --accent-violet: #ff8a3d;    /* orange (alias) */
 
-  /* Semantic — green stays for "up/valid", red for "down/invalid/error" */
+  /* Semantic — green for "up/valid", red for "down/invalid/error", and a clearly
+   * separate ORANGE warning so it doesn't read as the gold brand. */
   --success: #34d27f;
   --danger: #ff4d4d;
-  --warning: #ffc24b;          /* gold — used for Bitcoin + "orphaned" */
+  --warning: #ff8c2b;          /* orange — Bitcoin + "orphaned" */
 
   /* Lines */
   --border: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.15);
-  --ring: #ff3b42;
+  --ring: #ffc53d;
 
   /* Effects */
-  --glow-primary: 0 0 0 1px rgba(255, 59, 66, 0.22), 0 10px 44px -10px rgba(255, 59, 66, 0.5);
+  --glow-primary: 0 0 0 1px rgba(255, 197, 61, 0.22), 0 10px 44px -10px rgba(255, 197, 61, 0.5);
   --shadow-card: 0 1px 0 0 rgba(255, 255, 255, 0.04) inset, 0 22px 60px -34px rgba(0, 0, 0, 0.95);
 }
 
@@ -101,7 +102,7 @@ body {
 }
 
 ::selection {
-  background: rgba(255, 59, 66, 0.32);
+  background: rgba(255, 197, 61, 0.32);
   color: #fff;
 }
 
@@ -165,7 +166,7 @@ body {
 
 /* Gradient text */
 .text-gradient {
-  background: linear-gradient(100deg, #ffffff 0%, #ffd0c0 40%, var(--primary) 80%);
+  background: linear-gradient(100deg, #ffffff 0%, #ffe6a8 40%, var(--primary) 80%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -207,7 +208,7 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 59, 66, 0.5),
+    rgba(255, 197, 61, 0.5),
     transparent
   );
 }
@@ -266,9 +267,9 @@ body {
 }
 
 @keyframes pulse-ring {
-  0% { box-shadow: 0 0 0 0 rgba(255, 59, 66, 0.5); }
-  70% { box-shadow: 0 0 0 12px rgba(255, 59, 66, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(255, 59, 66, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(255, 197, 61, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(255, 197, 61, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 197, 61, 0); }
 }
 
 @keyframes dash-flow {

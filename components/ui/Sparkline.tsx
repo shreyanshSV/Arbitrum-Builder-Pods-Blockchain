@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
  */
 export function Sparkline({
   data,
-  color = "#ff3b42",
+  color = "#ffc53d",
   className,
   strokeWidth = 1.8,
   fill = true,

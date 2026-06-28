@@ -59,7 +59,7 @@ export function DifficultyControl({
                 "h-11 rounded-xl border font-mono tnum text-sm font-semibold transition-all",
                 "disabled:cursor-not-allowed disabled:opacity-40",
                 active
-                  ? "border-primary/60 bg-primary/15 text-primary shadow-[0_0_0_1px_rgba(255,59,66,0.25)]"
+                  ? "border-primary/60 bg-primary/15 text-primary shadow-[0_0_0_1px_rgba(255,197,61,0.25)]"
                   : "border-border bg-background/40 text-muted-strong hover:border-border-strong hover:text-foreground",
               )}
             >
