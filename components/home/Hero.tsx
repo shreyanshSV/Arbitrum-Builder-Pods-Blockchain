@@ -37,12 +37,12 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       >
         <Image
-          src="/blockchain-network.png"
+          src="/generated/hero-network.png"
           alt=""
           fill
           priority
           sizes="100vw"
-          className="object-cover object-right opacity-35 [mask-image:radial-gradient(130%_110%_at_78%_42%,black,transparent_72%)] sm:opacity-45"
+          className="object-cover object-right opacity-40 [mask-image:radial-gradient(130%_110%_at_80%_40%,black,transparent_70%)] sm:opacity-55"
         />
         <ParticleNetwork className="absolute inset-0 h-full w-full [mask-image:radial-gradient(120%_120%_at_70%_40%,black,transparent_78%)]" />
       </div>

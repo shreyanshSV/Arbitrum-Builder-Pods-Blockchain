@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, BookOpen, Columns3, Lightbulb } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal } from "@/components/ui/Reveal";
@@ -14,7 +15,21 @@ import { concepts, introStats } from "@/components/concepts/data";
  */
 export function ConceptsPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
+    <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
+      {/* thematic backdrop */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-0 h-72 w-[min(620px,85%)] opacity-25 [mask-image:radial-gradient(80%_80%_at_85%_18%,black,transparent_72%)]"
+      >
+        <Image
+          src="/generated/concepts.png"
+          alt=""
+          fill
+          sizes="(max-width: 1024px) 80vw, 620px"
+          className="object-cover"
+        />
+      </div>
+
       {/* intro hero */}
       <SectionHeading
         eyebrow="The fundamentals"

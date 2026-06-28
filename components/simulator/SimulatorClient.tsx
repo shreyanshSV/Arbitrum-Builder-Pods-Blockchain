@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import Image from "next/image";
 import { motion, type Variants } from "motion/react";
 import { useReducedMotionSafe } from "@/components/ui/useReducedMotionSafe";
 import {
@@ -388,7 +389,21 @@ export function SimulatorClient() {
   /* ----- render --------------------------------------------------------- */
 
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
+    <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20">
+      {/* thematic backdrop */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-0 top-0 h-72 w-[min(620px,85%)] opacity-20 [mask-image:radial-gradient(80%_80%_at_85%_18%,black,transparent_72%)]"
+      >
+        <Image
+          src="/generated/simulator.png"
+          alt=""
+          fill
+          sizes="(max-width: 1024px) 80vw, 620px"
+          className="object-cover"
+        />
+      </div>
+
       <SectionHeading
         eyebrow="Proof of Work · Live"
         align="left"

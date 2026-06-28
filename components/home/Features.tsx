@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Columns3,
   LineChart,
@@ -16,25 +17,25 @@ const features = [
   {
     href: "/concepts",
     icon: Columns3,
+    image: "/generated/concepts.png",
     title: "Concept Comparison Cards",
     desc: "Web2 vs Web3, Ethereum vs Bitcoin, public vs private keys, and blockchains vs databases — explained side by side, in plain language.",
-    accent: "from-primary/30 to-primary/5",
     iconColor: "text-primary",
   },
   {
     href: "/prices",
     icon: LineChart,
+    image: "/generated/prices.png",
     title: "Live Price Dashboard",
     desc: "Real-time ETH, BTC, ARB and more from CoinGecko, with 7-day sparklines, 24h change arrows, and a server-streamed live mode.",
-    accent: "from-accent-cyan/30 to-accent-cyan/5",
     iconColor: "text-accent-cyan",
   },
   {
     href: "/simulator",
     icon: Boxes,
+    image: "/generated/simulator.png",
     title: "Proof-of-Work Simulator",
     desc: "Mine blocks with genuine SHA-256 hashing, find a valid nonce, then edit a block and watch the whole chain turn red.",
-    accent: "from-accent-violet/30 to-accent-violet/5",
     iconColor: "text-accent-violet",
   },
 ];
@@ -65,35 +66,52 @@ export function Features() {
             <Reveal key={feature.href} delay={i * 0.08}>
               <Link
                 href={feature.href}
-                className="group glass lift block h-full rounded-2xl p-6"
+                className="group glass lift block h-full overflow-hidden rounded-2xl"
               >
-                <div
-                  className={cn(
-                    "mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ring-1 ring-inset ring-white/10",
-                    feature.accent,
-                  )}
-                >
-                  <Icon className={cn("h-6 w-6", feature.iconColor)} />
+                {/* thematic image topper */}
+                <div className="relative h-44 overflow-hidden">
+                  <Image
+                    src={feature.image}
+                    alt=""
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                  />
+                  {/* fade the image into the card body */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                  {/* icon chip over the image */}
+                  <div className="absolute bottom-3 left-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-background/70 backdrop-blur">
+                    <Icon className={cn("h-5 w-5", feature.iconColor)} />
+                  </div>
                 </div>
-                <h3 className="font-display text-xl font-bold tracking-tight">
-                  {feature.title}
-                </h3>
-                <p className="mt-2.5 text-sm leading-relaxed text-muted">
-                  {feature.desc}
-                </p>
-                <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5">
-                  Open module
-                  <ArrowUpRight className="h-4 w-4" />
-                </span>
+
+                <div className="p-6 pt-5">
+                  <h3 className="font-display text-xl font-bold tracking-tight">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-2.5 text-sm leading-relaxed text-muted">
+                    {feature.desc}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-1 text-sm font-medium text-primary transition-transform group-hover:translate-x-0.5">
+                    Open module
+                    <ArrowUpRight className="h-4 w-4" />
+                  </span>
+                </div>
               </Link>
             </Reveal>
           );
         })}
 
-        {/* wide highlight card */}
+        {/* wide highlight card with the chain-cubes render */}
         <Reveal delay={0.1} className="sm:col-span-2 lg:col-span-3">
           <div className="glass relative overflow-hidden rounded-2xl p-7 sm:p-9">
-            <div className="bg-dots absolute inset-0 opacity-40" />
+            <Image
+              src="/generated/chain-cubes.png"
+              alt=""
+              fill
+              sizes="100vw"
+              className="object-cover object-right opacity-25 [mask-image:linear-gradient(to_right,transparent,black_55%)]"
+            />
             <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-xl">
                 <h3 className="font-display text-2xl font-bold tracking-tight">
