@@ -1,13 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion, type Variants } from "motion/react";
 import { ArrowRight, Activity, Boxes, Layers } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { buttonStyles } from "@/components/ui/Button";
 import { ChainVisual } from "@/components/home/ChainVisual";
 import { ParticleNetwork } from "@/components/home/ParticleNetwork";
+import { HeroBackground } from "@/components/home/HeroBackground";
 
 const container: Variants = {
   hidden: {},
@@ -31,20 +31,20 @@ const heroStats = [
 export function Hero() {
   return (
     <section className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 pb-12 pt-14 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pt-20">
-      {/* ambient blockchain backdrop (decorative): static render + live mesh */}
+      {/* ambient blockchain backdrop (decorative): looping video + live mesh */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 overflow-hidden"
       >
-        <Image
-          src="/generated/hero-network.png"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-right opacity-40 [mask-image:radial-gradient(130%_110%_at_80%_40%,black,transparent_70%)] sm:opacity-55"
-        />
-        <ParticleNetwork className="absolute inset-0 h-full w-full [mask-image:radial-gradient(120%_120%_at_70%_40%,black,transparent_78%)]" />
+        {/* video (falls back to its poster still if the file isn't shipped) */}
+        <div className="absolute inset-0 opacity-60 [mask-image:radial-gradient(130%_110%_at_82%_42%,black,transparent_70%)]">
+          <HeroBackground />
+        </div>
+        {/* legibility scrims: keep the left-side headline crisp + ground top/bottom */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/75 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-transparent to-background" />
+        {/* subtle interactive mesh on top */}
+        <ParticleNetwork className="absolute inset-0 h-full w-full opacity-70 [mask-image:radial-gradient(120%_120%_at_72%_40%,black,transparent_80%)]" />
       </div>
 
       <motion.div variants={container} initial="hidden" animate="show">
