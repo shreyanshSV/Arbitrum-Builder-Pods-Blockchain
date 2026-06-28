@@ -1,0 +1,292 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * ChainLab — Design System
+ * Dark-mode-first, scarlet/crimson accented Web3 aesthetic.
+ * Token layer (:root) -> Tailwind theme map (@theme inline) -> utilities
+ * ------------------------------------------------------------------ */
+
+:root {
+  /* Surfaces — deep, slightly warm neutral so red reads as intentional, not alarm */
+  --background: #0a0809;
+  --background-elevated: #120e10;
+  --surface: #181315;
+  --surface-2: #201a1c;
+
+  /* Text — warm-neutral, high contrast */
+  --foreground: #f4eff0;
+  --muted: #a39ba0;
+  --muted-strong: #cdc6c9;
+
+  /* Brand — crimson/scarlet family with a warm ember accent. The accent-cyan /
+   * accent-violet names are kept as design-token aliases (referenced widely) but
+   * now resolve to ember-orange and rose so the whole palette stays in the red
+   * family — a deliberate ember→scarlet→rose sweep, not a rainbow. */
+  --primary: #ff3b42;          /* scarlet */
+  --primary-strong: #db1f29;
+  --primary-foreground: #ffffff;
+  --accent-cyan: #ff8a3d;      /* ember orange (alias) */
+  --accent-violet: #ff4d6a;    /* rose red (alias) */
+
+  /* Semantic — green stays for "up/valid", red for "down/invalid/error" */
+  --success: #34d27f;
+  --danger: #ff4d4d;
+  --warning: #ffc24b;          /* gold — used for Bitcoin + "orphaned" */
+
+  /* Lines */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --ring: #ff3b42;
+
+  /* Effects */
+  --glow-primary: 0 0 0 1px rgba(255, 59, 66, 0.22), 0 10px 44px -10px rgba(255, 59, 66, 0.5);
+  --shadow-card: 0 1px 0 0 rgba(255, 255, 255, 0.04) inset, 0 22px 60px -34px rgba(0, 0, 0, 0.95);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-elevated: var(--background-elevated);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-strong: var(--muted-strong);
+
+  --color-primary: var(--primary);
+  --color-primary-strong: var(--primary-strong);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-violet: var(--accent-violet);
+
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-ring: var(--ring);
+
+  --font-display: var(--font-space-grotesk), "Space Grotesk", ui-sans-serif, system-ui;
+  --font-sans: var(--font-inter), "Inter", ui-sans-serif, system-ui;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace, monospace;
+
+  /* shared radius scale */
+  --radius-xl: 1.1rem;
+  --radius-2xl: 1.4rem;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  /* offset for the fixed navbar when jumping to anchors */
+  scroll-padding-top: 6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(255, 59, 66, 0.32);
+  color: #fff;
+}
+
+/* Custom scrollbar (web) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--surface-2), var(--surface));
+  border-radius: 9999px;
+  border: 2px solid var(--background);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-strong);
+}
+
+/* Focus visibility for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Reusable utility classes
+ * ------------------------------------------------------------------ */
+
+/* Glass card surface */
+.glass {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.045),
+    rgba(255, 255, 255, 0.015)
+  );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+}
+
+.glass-strong {
+  background: linear-gradient(
+    180deg,
+    rgba(32, 26, 28, 0.88),
+    rgba(18, 14, 16, 0.9)
+  );
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border);
+}
+
+/* Fine film-grain texture overlay — adds depth so flat dark areas don't read
+ * as a generic "AI gradient". Applied in BackgroundFX. */
+.noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(100deg, #ffffff 0%, #ffd0c0 40%, var(--primary) 80%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-brand {
+  background: linear-gradient(100deg, var(--accent-cyan), var(--primary) 50%, var(--accent-violet));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animated conic/aurora glow blob */
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.5;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Grid + dot background layers (used in BackgroundFX) */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.bg-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Hairline divider with center glow */
+.divider-glow {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 59, 66, 0.5),
+    transparent
+  );
+}
+
+/* Tabular numbers for prices, hashes, counters */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Subtle interactive lift for cards */
+.lift {
+  transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 220ms ease, box-shadow 220ms ease;
+}
+.lift:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+}
+
+/* Shimmer for skeleton loaders */
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.09) 37%,
+    rgba(255, 255, 255, 0.03) 63%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------ *
+ * Keyframes
+ * ------------------------------------------------------------------ */
+@keyframes shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.08); }
+  66% { transform: translate(-30px, 20px) scale(0.96); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(255, 59, 66, 0.5); }
+  70% { box-shadow: 0 0 0 12px rgba(255, 59, 66, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 59, 66, 0); }
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -1000; }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-drift { animation: drift 18s ease-in-out infinite; }
+.animate-blink { animation: blink 1s steps(1) infinite; }
+.animate-pulse-ring { animation: pulse-ring 2s ease-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-drift,
+  .animate-blink,
+  .animate-pulse-ring,
+  .shimmer,
+  .aurora {
+    animation: none !important;
+  }
+}
